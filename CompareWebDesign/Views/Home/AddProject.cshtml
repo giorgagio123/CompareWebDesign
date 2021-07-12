@@ -1,0 +1,11 @@
+﻿@model Project
+
+<form asp-controller="Home" asp-action="AddProject" method="post">
+    <div>
+        <input asp-for="Name" />
+    </div>
+    <button type="submit" name="save" class="btn bg-blue">
+        <i class="fa fa-floppy-o"></i>
+        <p>Save</p>
+    </button>
+</form>

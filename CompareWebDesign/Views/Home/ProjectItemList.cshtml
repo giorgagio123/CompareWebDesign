@@ -1,0 +1,11 @@
+﻿@model List<ProjectItem>
+
+
+<a asp-action="AddProjectItem" asp-controller="Home" asp-route-id="@ViewBag.ProjectId">Add Project Item</a>
+@foreach (var projectItem in Model)
+{
+    <p>@projectItem.Name</p>
+    <a asp-action="ProjectItemDetails" asp-controller="Home" asp-route-id="@projectItem.Id" class="pro-title">
+        @projectItem.Name
+    </a>
+}

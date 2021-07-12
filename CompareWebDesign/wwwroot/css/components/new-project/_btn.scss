@@ -1,0 +1,15 @@
+.new-project {
+    &--btn {
+        padding: 9px 18px;
+        border-radius: 8px;
+        box-shadow: 0 0.5px 1.5px 0 rgba(0, 0, 0, 0.16);
+        border: solid 0.5px #e4e4e4;
+        background-color: #ffffff;
+        font-size: 13px;
+        color: #000;
+
+        img {
+            margin-right: 4px;
+        }
+    }
+}

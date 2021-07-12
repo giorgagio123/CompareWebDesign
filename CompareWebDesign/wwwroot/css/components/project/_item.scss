@@ -1,0 +1,28 @@
+.project {
+    &__item {
+        min-width: 224px;
+        width: 100%;
+        margin-bottom: 24px;
+        border-radius: 6px;
+        box-shadow: 0 0.5px 1.5px 0 rgba(0, 0, 0, 0.16);
+        border: solid 0.5px #e4e4e4;
+        background-color: #ffffff;
+        overflow: hidden;
+
+        &--cover {
+            height: 142px;
+            padding: 15px 32px 0 31px;
+            background-color: #a1a1a1;
+
+            img {
+                height: 100%;
+            }
+        }
+
+        &--title {
+            padding: 12px;
+            color: #000;
+            font-size: 14px;
+        }
+    }
+}

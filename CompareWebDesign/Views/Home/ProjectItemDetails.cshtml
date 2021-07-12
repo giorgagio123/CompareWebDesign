@@ -1,0 +1,31 @@
+﻿@model ProjectItem
+
+@foreach (var item in @Model.Pictures)
+{
+    if (item.IsLiveImage)
+    {
+        <div class="live-image">
+            <img src="@item.PictureSrc" alt="Alternate Text" />
+        </div>
+    }
+    else
+    {
+        <div class="design-image">
+            <img src="@item.PictureSrc" alt="Alternate Text" />
+        </div>
+    }
+}
+
+<div class="comments">
+    @foreach (var item in @Model.Comments)
+    {
+        <div class="comment-item">
+            @item.LiveComment
+        </div>
+    }
+</div>
+
+<script>
+    var cropSettings = @Model.CropSettings
+    console.log(cropSettings);
+</script>

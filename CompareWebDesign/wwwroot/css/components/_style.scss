@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+    background-color: #f7f7f7;
+}
+
+.bold {
+    font-family: 'SF-Pro-Display-Bold';
+}
+
+.medium {
+    font-family: 'SF-Pro-Display-Medium';
+}
+
+.regular {
+    font-family: 'SF-Pro-Display-Regular';
+}
+
+.semibold {
+    font-family: 'SF-Pro-Display-Semibold';
+}
+  

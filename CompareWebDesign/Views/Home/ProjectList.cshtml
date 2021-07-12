@@ -1,0 +1,29 @@
+﻿@model List<Project>
+
+<div>
+    <a asp-action="AddProject" asp-controller="Home">Add Project</a>
+
+    @if (User.Identity.IsAuthenticated)
+    {
+        if (!Model.Any())
+        {
+            <p>Create Project</p>
+        }
+        else
+        {
+            foreach (var project in Model)
+            {
+                <p>@project.Name</p>
+                <a asp-action="ProjectItemList" asp-controller="Home" asp-route-id="@project.Id" class="pro-title">
+                    @project.Name
+                </a>
+            }
+        }
+    }
+    else
+    {
+        <p>Log In To Create Project</p>
+    }
+</div>
+
+

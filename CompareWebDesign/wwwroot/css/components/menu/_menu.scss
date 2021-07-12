@@ -1,0 +1,20 @@
+.menu {
+    display: flex;
+
+    &__item {
+        margin-right: 30px;
+        list-style: none;
+
+        &.active {
+            a {
+                font-family: 'SF-Pro-Display-Bold';
+            }
+        }
+    }
+
+    &__link {
+        color: #000;
+        font-size: 15px;
+        text-decoration: none;
+    }
+}

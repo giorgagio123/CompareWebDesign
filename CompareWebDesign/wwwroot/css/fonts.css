@@ -1,0 +1,24 @@
+@font-face {
+  font-family: 'SF-Pro-Display-Bold';
+  src: url('../fonts/SF-Pro-Display-Bold.otf');
+}
+
+@font-face {
+  font-family: 'SF-Pro-Display-Medium';
+  src: url('../fonts/SF-Pro-Display-Medium.otf');
+}
+
+@font-face {
+  font-family: 'SF-Pro-Display-Regular';
+  src: url('../fonts/SF-Pro-Display-Regular.otf');
+}
+
+@font-face {
+  font-family: 'SF-Pro-Display-Semibold';
+  src: url('../fonts/SF-Pro-Display-Semibold.otf');
+}
+
+/* @font-face {
+  font-family: 'firago cam Bold';
+  src: url('../fonts/FiraGO-Bold.otf') format("opentype");
+} */

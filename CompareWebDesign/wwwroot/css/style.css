@@ -1,0 +1,399 @@
+@import url(c:\Users\admin\Desktop\testerapp\css\fonts.css);
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+*::before,
+*::after {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+}
+
+.comment-btn {
+    background: url(../../img/bt-delete.png);
+    cursor: pointer;
+    height: 16px;
+    width: 16px;
+}
+
+.comment-btn {
+    background: red;
+    cursor: pointer;
+    height: 16px;
+    width: 16px;
+}
+
+.comment-area {
+    position:absolute;
+}
+
+body {
+    background-color: #f7f7f7;
+}
+
+.bold {
+  font-family: 'SF-Pro-Display-Bold';
+}
+
+.medium {
+  font-family: 'SF-Pro-Display-Medium';
+}
+
+.regular {
+  font-family: 'SF-Pro-Display-Regular';
+}
+
+.semibold {
+  font-family: 'SF-Pro-Display-Semibold';
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 1px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.dashboard {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.dashboard__header--page-title {
+  color: #000;
+  font-size: 32px;
+}
+
+.dashboard__body {
+  margin-top: 16px;
+  margin-bottom: 32px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  padding-bottom: 8px;
+}
+
+.croppr-region {
+  width: 0 !important;
+  height: 0 !important;
+}
+
+.tester {
+  width: 100%;
+}
+
+.tester__section {
+  width: 50%;
+}
+
+.tester__section--border {
+  border-right: 1px solid red;
+}
+
+.mobile {
+  width: 375px;
+  height: 812px;
+  background-color: yellow;
+}
+
+.mobile__title {
+  margin-bottom: 8px;
+  color: #000;
+  font-size: 16px;
+}
+
+.mobile__desc {
+  max-width: 220px;
+  margin-bottom: 8px;
+  color: #cecece;
+  font-size: 16px;
+  text-align: center;
+}
+
+.mobile__upload {
+  position: relative;
+}
+
+.mobile__upload--input {
+  position: absolute;
+  display: none;
+}
+
+.mobile__upload--btn {
+  background-color: silver;
+  color: #000;
+  font-size: 16px;
+  padding: 8px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
+}
+
+.design {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.view__design {
+  display: none;
+  width: 100%;
+  height: 100%;
+  background-color: silver;
+  overflow: auto;
+}
+
+.view__design--img {
+  width: 100%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.view__live {
+  display: none;
+  width: 100%;
+  height: 100%;
+  background-color: silver;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.view__live--img {
+  width: 100%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.live {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.live__live {
+  display: none;
+}
+
+.select-areas-overlay {
+  overflow: hidden;
+  position: absolute;
+}
+
+.select-areas-outline {
+  background: #fff url("../../img/outline.gif");
+  overflow: hidden;
+}
+
+.select-areas-resize-handler {
+  background-color: #000;
+  border: 1px #fff solid;
+  height: 8px;
+  width: 8px;
+  overflow: hidden;
+}
+
+.select-areas-delete-area {
+  background: url("../../img/bt-delete.png");
+  cursor: pointer;
+  height: 16px;
+  width: 16px;
+}
+
+.delete-area {
+  position: absolute;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.bar {
+  max-width: 281px;
+  width: 100%;
+  height: revert;
+  border-right: 0.5px solid #e4e4e4;
+}
+
+.bar > * {
+  padding: 0 30px;
+}
+
+.bar__header {
+  position: relative;
+}
+
+.bar__header--icon {
+  position: absolute;
+  right: -12px;
+  top: 16px;
+  padding: 4px;
+  -webkit-box-shadow: 0 0.5px 1.5px 0 rgba(0, 0, 0, 0.16);
+          box-shadow: 0 0.5px 1.5px 0 rgba(0, 0, 0, 0.16);
+  border: solid 0.5px #e4e4e4;
+  border-radius: 50%;
+  background-color: #ffffff;
+  cursor: pointer;
+}
+
+.content {
+  width: 100%;
+  padding: 36px 95px;
+}
+
+.logo {
+  padding-top: 16px;
+  padding-bottom: 16px;
+  border-bottom: 0.5px solid #e4e4e4;
+  color: #000;
+  font-size: 20px;
+}
+
+.profile {
+  margin: 20px 0;
+}
+
+.profile__btn {
+  padding: 12px 20px 12px 12px;
+  border-radius: 8px;
+  -webkit-box-shadow: 0 0.5px 1.5px 0 rgba(0, 0, 0, 0.16);
+          box-shadow: 0 0.5px 1.5px 0 rgba(0, 0, 0, 0.16);
+  border: solid 0.5px #e4e4e4;
+  background-color: #ffffff;
+  cursor: pointer;
+}
+
+.profile__btn--profile {
+  margin-right: 10px;
+}
+
+.profile__btn--name {
+  color: #000;
+  font-size: 14px;
+}
+
+.profile__btn--icon {
+  display: block;
+}
+
+.category {
+  margin-bottom: 16px;
+}
+
+.category__title {
+  color: #000000;
+  font-size: 10px;
+  letter-spacing: 1px;
+  opacity: 0.5;
+}
+
+.category__list {
+  display: block;
+  margin-top: 8px;
+}
+
+.category__list--item {
+  list-style: none;
+  padding: 8px 0;
+}
+
+.category__list--link {
+  color: #000000;
+  font-size: 13px;
+  opacity: .5;
+  text-decoration: none;
+}
+
+.category__list--icon {
+  margin-right: 8px;
+}
+
+.new-project--btn {
+  padding: 9px 18px;
+  border-radius: 8px;
+  -webkit-box-shadow: 0 0.5px 1.5px 0 rgba(0, 0, 0, 0.16);
+          box-shadow: 0 0.5px 1.5px 0 rgba(0, 0, 0, 0.16);
+  border: solid 0.5px #e4e4e4;
+  background-color: #ffffff;
+  font-size: 13px;
+  color: #000;
+}
+
+.new-project--btn img {
+  margin-right: 4px;
+}
+
+.menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.menu__item {
+  margin-right: 30px;
+  list-style: none;
+}
+
+.menu__item.active a {
+  font-family: 'SF-Pro-Display-Bold';
+}
+
+.menu__link {
+  color: #000;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+.search input {
+  width: 161px;
+  padding: 6px 86px 6px 8px;
+  border-radius: 14px;
+  border: solid 0.5px #d7d7d7;
+  background-color: #efefef;
+  outline: none;
+  font-size: 13px;
+  color: #000;
+}
+
+.project__item {
+  min-width: 224px;
+  width: 100%;
+  margin-bottom: 24px;
+  border-radius: 6px;
+  -webkit-box-shadow: 0 0.5px 1.5px 0 rgba(0, 0, 0, 0.16);
+          box-shadow: 0 0.5px 1.5px 0 rgba(0, 0, 0, 0.16);
+  border: solid 0.5px #e4e4e4;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+.project__item--cover {
+  height: 142px;
+  padding: 15px 32px 0 31px;
+  background-color: #a1a1a1;
+}
+
+.project__item--cover img {
+  height: 100%;
+}
+
+.project__item--title {
+  padding: 12px;
+  color: #000;
+  font-size: 14px;
+}
+/*# sourceMappingURL=style.css.map */
