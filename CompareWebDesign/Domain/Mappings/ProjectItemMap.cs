@@ -12,6 +12,7 @@ namespace CompareWebDesign.Domain.Mappings
         public void Configure(EntityTypeBuilder<ProjectItem> builder)
         {
             builder.HasOne(p => p.Project).WithMany(p => p.ProjectItems).HasForeignKey(x => x.ProjectId);
+            builder.Ignore(x => x.CropSettingsModel);
         }
     }
 }

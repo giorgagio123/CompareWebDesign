@@ -163,9 +163,13 @@ namespace CompareWebDesign.Controllers
         public IActionResult ProjectItemDetails(int id)
         {
             var model = _projectService.GetProjectItemById(id);
-            
+
+            model.CropSettingsModel = JsonConvert.DeserializeObject<List<CropSettingsModel>>(model.CropSettings);
+
             return View(model);
         }
+
+
 
         //[HttpPost]
         //public IActionResult ProjectItemDetails(ProjectItemDetailsModel model)
@@ -200,4 +204,15 @@ namespace CompareWebDesign.Controllers
             }
         }
     }
+
+    //public class CropSettingsModel 
+    //{
+    //    public int id { get; set; }
+    //    public int x { get; set; }
+
+    //    public int y { get; set; }
+    //    public int z { get; set; }
+    //    public int width { get; set; }
+    //    public int height { get; set; }
+    //}
 }

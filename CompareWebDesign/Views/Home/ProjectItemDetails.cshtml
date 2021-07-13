@@ -1,4 +1,8 @@
 ﻿@model ProjectItem
+@using Newtonsoft.Json;
+
+@{
+}
 
 @foreach (var item in @Model.Pictures)
 {
@@ -26,6 +30,6 @@
 </div>
 
 <script>
-    var cropSettings = @Model.CropSettings
-    console.log(cropSettings);
+    var xx = @Html.Raw(Model.CropSettings);
+
 </script>

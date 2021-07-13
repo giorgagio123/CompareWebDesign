@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CompareWebDesign.Models.Home;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,12 +8,19 @@ namespace CompareWebDesign.Domain
 {
     public class ProjectItem : BaseEntity
     {
+        public ProjectItem()
+        {
+            CropSettingsModel = new List<CropSettingsModel>();
+        }
+
         public string Name { get; set; }
 
 
         //project
         public int ProjectId { get; set; }
         public string CropSettings { get; set; }
+
+        public List<CropSettingsModel> CropSettingsModel { get;set;}
         public virtual Project Project { get; set; }
 
         //pictures
