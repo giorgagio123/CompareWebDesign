@@ -1,35 +1,143 @@
 ﻿@model ProjectItem
-@using Newtonsoft.Json;
 
 @{
+    Layout = "";
 }
 
-@foreach (var item in @Model.Pictures)
-{
-    if (item.IsLiveImage)
-    {
-        <div class="live-image">
-            <img src="@item.PictureSrc" alt="Alternate Text" />
-        </div>
-    }
-    else
-    {
-        <div class="design-image">
-            <img src="@item.PictureSrc" alt="Alternate Text" />
-        </div>
-    }
-}
 
-<div class="comments">
-    @foreach (var item in @Model.Comments)
-    {
-        <div class="comment-item">
-            @item.LiveComment
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - CompareWebDesign</title>
+
+    @*<environment include="Development">
+            <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        </environment>
+        <environment exclude="Development">
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+                  asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+                  asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
+                  crossorigin="anonymous"
+                  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" />
+        </environment>*@
+    <link rel="stylesheet" href="~/css/bootstrap-grid.css">
+    <link rel="stylesheet" href="~/css/fonts.css">
+    <link rel="stylesheet" href="~/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body class="tester-body">
+
+
+        <div class="d-flex">
+            <div class="tester-page">
+                <div class="tester__header">
+                    name
+                </div>
+                <div class="tester d-flex flex-row-reverse">
+                    @foreach (var item in @Model.Pictures)
+                    {
+                        @if (!item.IsLiveImage)
+                        {
+                            <div class="tester__section tester__section--border d-flex justify-content-center align-items-center">
+                                <div class="mobile d-flex justify-content-center align-items-center">
+                                        <div class="view view__design">
+                                            <img src="@item.PictureSrc" alt="design view img" class="view__design--img">
+                                        </div>
+                                </div>
+                            </div><!-- design version end -->
+                        }
+
+                        @if (item.IsLiveImage)
+                        {
+                            <div class="tester__section tester__section--border d-flex flex-column justify-content-center align-items-center">
+                                <div class="mobile d-flex justify-content-center align-items-center">
+                                        <div class="view view__live">
+                                            <img src="@item.PictureSrc" alt="live view img" class="view__live--img">
+                                        </div>
+                                </div>
+                            </div><!-- live version end -->
+                        }
+                    }
+                 </div><!-- tester page end -->
+            </div><!--tester form end-->
+
+            <div class="comment-section">
+                <div class="comments">
+                    @foreach (var item in @Model.Comments)
+                    {
+                        <div class="comment-item">
+                            @item.LiveComment
+                        </div>
+                    }
+                </div>
+            </div>
         </div>
-    }
-</div>
 
-<script>
-    var xx = @Html.Raw(Model.CropSettings);
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="~/js/jquery.selectareas.js"></script>
+    <script src="~/js/main.js"></script>
 
-</script>
+    <script>
+    var position = @Html.Raw(Model.CropSettings);
+        position.map(item => {
+            console.log(item, item.x);
+            $('.view__live').append(`
+                <div class="position" style='top:${item.y}px; left:${item.x}px; width:${item.width}px; height:${item.height}px; z-index: ${item.z}'>
+                    <div class="position-text">${item.id + 1}</div>
+                </div>
+            `)
+        })
+    </script>
+
+    <style>
+        .tester-body {
+            padding-top: 70px;
+        }
+
+        .tester__header {
+            background: #fff;
+            width: 100%;
+            height: 70px;
+            border-bottom: 1px solid silver;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .tester-page {
+            width: 100%;
+        }
+
+        .comment-section {
+            width: calc(100%/3);
+        }
+
+        .view {
+            display: flex !important;
+            position: relative
+        }
+        .position {
+            border: 2px solid red;
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+            text-shadow: 1px 1px 1px #fff;
+        }
+        .position-text {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 13px;
+            text-shadow: 1px 1px 1px #fff;
+            background: orange;
+            padding: 10px;
+            border-radius: 50%;
+            color: #fff;
+        }
+    </style>
+</body>
+</html>

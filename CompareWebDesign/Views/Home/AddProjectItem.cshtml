@@ -1,91 +1,123 @@
 ﻿@model ProjectItemModel
 
-<form asp-controller="Home" asp-action="AddProjectItem" method="post" enctype="multipart/form-data" id="project-item-form">
-    <input type="hidden" asp-for="ProjectId" />
-    <input type="hidden" asp-for="CropSettings" />
-    <input type="hidden" asp-for="LiveImageBuffer" />
-    <input type="hidden" asp-for="DesignImageSrc" />
-    <div>
-        <input asp-for="Name" />
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - CompareWebDesign</title>
+
+    @*<environment include="Development">
+            <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        </environment>
+        <environment exclude="Development">
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+                  asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+                  asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
+                  crossorigin="anonymous"
+                  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" />
+        </environment>*@
+    <link rel="stylesheet" href="~/css/bootstrap-grid.css">
+    <link rel="stylesheet" href="~/css/fonts.css">
+    <link rel="stylesheet" href="~/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body class="tester-body">
+
+    <div class="d-flex">
+        <form asp-controller="Home" asp-action="AddProjectItem" method="post" enctype="multipart/form-data" id="project-item-form" class="tester-page">
+            <input type="hidden" asp-for="ProjectId" />
+            <input type="hidden" asp-for="CropSettings" />
+            <input type="hidden" asp-for="LiveImageBuffer" />
+            <input type="hidden" asp-for="DesignImageSrc" />
+            <div class="tester__header">
+                <input asp-for="Name" placeholder="Project Page Name" />
+                <button type="submit" name="save" class="btn bg-blue" id="project-item-submit">
+                    შენახვა
+                </button>
+            </div>
+
+            <div class="tester d-flex">
+                <div class="tester__section tester__section--border d-flex justify-content-center align-items-center">
+                    <div class="mobile d-flex justify-content-center align-items-center">
+                        <div class="design flex-column align-items-center">
+                            <h1 class="mobile__title medium">Design Version</h1>
+                            <div class="mobile__desc medium">Upload Ui/Ux Design version image</div>
+                            <label class="mobile__upload">
+                                <input onchange="viewImage(this)" class="mobile__upload--input" asp-for="DesignImage">
+                                @*<input type="file" onchange="viewImage(this)" class="mobile__upload--input">*@
+                                <div class="mobile__upload--btn medium">Upload</div>
+                            </label>
+                        </div><!-- upload version -->
+
+                        <div class="view view__design">
+                            <img src="~/img/view.jpg" alt="design view img" class="view__design--img">
+                        </div>
+                    </div>
+                </div><!-- design version end -->
+
+                <div class="tester__section tester__section--border d-flex flex-column justify-content-center align-items-center">
+                    <div class="mobile d-flex justify-content-center align-items-center">
+                        <div class="live flex-column align-items-center">
+                            <h1 class="mobile__title medium">Design Version</h1>
+                            <div class="mobile__desc medium">Upload Ui/Ux Design version image</div>
+                            @*<input type="text" class="live__link">*@
+                            <input asp-for="LiveImageSrc" class="live__link">
+                            <label class="mobile__upload--btn medium" onclick="liveLink()">
+                                Upload
+                            </label>
+                        </div><!-- upload version -->
+
+                        <div class="view view__live">
+                            <img src="" alt="live view img" class="view__live--img">
+                        </div>
+                    </div>
+
+                    @*<div>
+                        <div class="image-decorator">
+                            <img alt="Image principale" id="example" class="upload__descign--img" src="src" />
+                        </div>
+                        <table>
+                            <tr>
+                                <td class="actions">
+                                    <input type="button" id="btnView" value="Display areas" class="actionOn" />
+                                    <input type="button" id="btnViewRel" value="Display relative" class="actionOn" />
+                                    <input type="button" id="btnNew" value="Add New" class="actionOn" />
+                                    <input type="button" id="btnNews" value="Add 2 New" class="actionOn" />
+                                    <input type="button" id="btnReset" value="Reset" class="actionOn" />
+                                    <input type="button" id="btnDestroy" value="Destroy" class="actionOn" />
+                                    <input type="button" id="btnCreate" value="Create" class="actionOff" />
+                                </td>
+                                <td>
+                                    <div id="output" class='output'> </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>*@
+
+                </div><!-- live version end -->
+            </div><!-- tester page end -->
+        </form><!--tester form end-->
+
+        <form asp-controller="Home" asp-action="AddComment" method="post" class="comment-section">
+            <input class="selection-id" type="hidden" asp-for="CommentsModel.SelectionId" />
+            <input type="hidden" asp-for="CommentsModel.ProjectItemId" />
+            <input class="selection-id" asp-for="CommentsModel.Comment" />
+
+            <button type="submit">send</button>
+        </form>
     </div>
 
-    <div class="tester d-flex">
-        <div class="tester__section tester__section--border d-flex justify-content-center align-items-center">
-            <div class="mobile d-flex justify-content-center align-items-center">
-                <div class="design flex-column align-items-center">
-                    <h1 class="mobile__title medium">Design Version</h1>
-                    <div class="mobile__desc medium">Upload Ui/Ux Design version image</div>
-                    <label class="mobile__upload">
-                        <input onchange="viewImage(this)" class="mobile__upload--input" asp-for="DesignImage">
-                        @*<input type="file" onchange="viewImage(this)" class="mobile__upload--input">*@
-                        <div class="mobile__upload--btn medium">Upload</div>
-                    </label>
-                </div><!-- upload version -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="~/js/jquery.selectareas.js"></script>
+    <script src="~/js/main.js"></script>
 
-                <div class="view view__design">
-                    <img src="~/img/view.jpg" alt="design view img" class="view__design--img">
-                </div>
-            </div>
-        </div><!-- design version end -->
-
-        <div class="tester__section tester__section--border d-flex flex-column justify-content-center align-items-center">
-            <div class="mobile d-flex justify-content-center align-items-center">
-                <div class="live flex-column align-items-center">
-                    <h1 class="mobile__title medium">Design Version</h1>
-                    <div class="mobile__desc medium">Upload Ui/Ux Design version image</div>
-                    @*<input type="text" class="live__link">*@
-                    <input asp-for="LiveImageSrc" class="live__link">
-                    <label class="mobile__upload--btn medium" onclick="liveLink()">
-                        Upload
-                    </label>
-                </div><!-- upload version -->
-
-                <div class="view view__live">
-                    <img src="" alt="live view img" class="view__live--img">
-                </div>
-            </div>
-
-            <div>
-                <div class="image-decorator">
-                    <img alt="Image principale" id="example" class="upload__descign--img" src="src" />
-                </div>
-                <table>
-                    <tr>
-                        <td class="actions">
-                            <input type="button" id="btnView" value="Display areas" class="actionOn" />
-                            <input type="button" id="btnViewRel" value="Display relative" class="actionOn" />
-                            <input type="button" id="btnNew" value="Add New" class="actionOn" />
-                            <input type="button" id="btnNews" value="Add 2 New" class="actionOn" />
-                            <input type="button" id="btnReset" value="Reset" class="actionOn" />
-                            <input type="button" id="btnDestroy" value="Destroy" class="actionOn" />
-                            <input type="button" id="btnCreate" value="Create" class="actionOff" />
-                        </td>
-                        <td>
-                            <div id="output" class='output'> </div>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-
-        </div>
-    </div>
-
-
-</form>
-
-<button type="submit" name="save" class="btn bg-blue" id="project-item-submit">
-    <i class="fa fa-floppy-o"></i>
-    <p>Save</p>
-</button>
-<form asp-controller="Home" asp-action="AddComment" method="post">
-    <input class="selection-id" type="hidden" asp-for="CommentsModel.SelectionId" />
-    <input type="hidden" asp-for="CommentsModel.ProjectItemId" />
-    <input class="selection-id" asp-for="CommentsModel.Comment" />
-
-    <button type="submit">send</button>
-</form>
-
-<script>
+    <script>
         $('#project-item-submit').click(function (e) {
             debugger;
             e.preventDefault();
@@ -98,4 +130,28 @@
 
             return false;
         });
-</script>
+    </script>
+
+
+<style>
+    .tester-body {
+        padding-top: 70px;
+    }
+    .tester__header {
+        background: #fff;
+        width: 100%;
+        height: 70px;
+        border-bottom: 1px solid silver;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .tester-page {
+        width: 100%;
+    }
+    .comment-section {
+        width: calc(100%/3);
+    }
+</style>
+</body>
+</html>

@@ -22,46 +22,135 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-    <nav class="navbar navbar-inverse">
-        <div class="container">
-            <header>
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <a class="navbar-brand" href="/">PhoneStore</a>
-                    </div>
-                    <ul class="nav navbar-nav"></ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        @if (User.Identity.IsAuthenticated)
-                        {
-                            <li>
-                                <a style="color:fff" asp-controller="Customer" asp-action="ProductList">@User.Identity.Name</a>
-                                <form method="post" asp-controller="Account" asp-action="Logout">
-                                    <span class="glyphicon glyphicon-off"></span> <input type="submit" value="Logout" />
-                                </form>
-                            </li>
-                        }
-                        else
-                        {
-                            <li><a asp-controller="Account" asp-action="Register"><span class="glyphicon glyphicon-user"></span> Register</a></li>
-                            <li><a asp-controller="Account" asp-action="Login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                        }
-                    </ul>
-                </div>
-            </header>
-        </div>
-    </nav>
-    <div class="container">
-        <partial name="_CookieConsentPartial" />
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2021 - CompareWebDesign - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <div class="dashboard d-flex">
+            <div class="bar d-flex flex-column">
+                <div class="bar__header d-flex align-items-center justify-content-between">
+                    <div class="bar__header--icon d-flex align-items-center justify-content-center">
+                        <img src="/img/bar/bar-arrow.svg" alt="">
+                    </div>
+                </div><!-- bar icon end -->
+
+                <div class="logo bold">
+                    TestMode
+                </div><!-- logo end -->
+
+
+
+                <div class="profile">
+                    <div class="profile__btn d-flex align-items-center justify-content-between">
+                        <div class="d-flex align-items-center">
+                            <img class="profile__btn--profile" src="img/bar/profile.png" alt="">
+                            <div class="profile__btn--name medium">@User.Identity.Name</div>
+                        </div>
+                        <img class="profile__btn--icon" src="img/bar/profile-arrow.svg" alt="">
+                    </div><!-- profile btn end -->
+                    <form method="post" asp-controller="Account" asp-action="Logout">
+                        <input type="submit" value="Logout" />
+                    </form>
+                </div><!-- profile end -->
+                
+                @await Component.InvokeAsync("ProjectInfo")
+            </div><!-- bar end -->
+
+            <div class="content">
+                <div class="dashboard__header d-flex justify-content-between" style="margin-bottom: 30px">
+                    <div class="dashboard__header--page-title bold">
+                        Projects
+                    </div>
+                    <div>
+                        <form class="search">
+                            <label>
+                                <input type="text" placeholder="search" class="regular">
+                            </label>
+                        </form>
+                    </div>
+                </div><!-- dashboard header end -->
+
+                <div class="row project">
+                    <partial name="_CookieConsentPartial" />
+                    @RenderBody()
+                </div>
+
+            </div><!-- dashboard content end -->
         </div>
-    </footer>
+    }
+    else
+    {
+        <div class="avtorization">
+            <div class="avtorization__popup">
+                <ul class="avtorization__popup--menu">
+                    <li class="avtorization__popup--btn">
+                        <a class="avtorization__popup--link" asp-controller="Account" asp-action="Register">Register</a>
+                    </li>
+                    <li class="avtorization__popup--btn">
+                        <a class="avtorization__popup--link" asp-controller="Account" asp-action="Login">Login</a>
+                    </li>
+                </ul>
+                <div>
+                    <partial name="_CookieConsentPartial" />
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    }
+
+
+
+
+
+
+    <style>
+        .avtorization {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            z-index: 2;
+        }
+
+        .avtorization__popup {
+            display: flex;
+            flex-direction: column;
+            margin: 0px auto 24px;
+            width: 400px;
+            padding: 32px 40px;
+            background: rgb(255, 255, 255);
+            border-radius: 3px;
+            box-shadow: rgb(0 0 0 / 10%) 0px 0px 10px;
+            box-sizing: border-box;
+            color: rgb(94, 108, 132);
+        }
+
+        .avtorization__popup--btn {
+            margin-top: 30px;
+            background: rgba(9, 30, 66, 0.04) !important;
+            color: rgb(80, 95, 121) !important;
+            list-style: none;
+        }
+
+        .avtorization__popup--link {
+            width: 100%;
+            padding: 10px;
+            display: block;
+            color: rgb(80, 95, 121) !important;
+            text-decoration: none;
+            font-size: 16px;
+        }
+    </style>
+
+
+
+
+
+
+    @*<footer class="border-top footer text-muted">
+            <div class="container">
+                &copy; 2021 - CompareWebDesign - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
+        </footer>
+    *@
 
     @*<environment include="Development">
             <script src="~/lib/jquery/dist/jquery.js"></script>

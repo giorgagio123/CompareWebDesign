@@ -30,11 +30,11 @@ namespace CompareWebDesign.Models.Home
 
     public class CropSettingsModel
     {
-        public int x { get; set; }
-        public int y { get; set; }
-        public int z { get; set; }
-        public int width { get; set; }
-        public int height { get; set; }
+        public decimal x { get; set; }
+        public decimal y { get; set; }
+        public decimal z { get; set; }
+        public decimal width { get; set; }
+        public decimal height { get; set; }
     }
 
     public class CommentsModel

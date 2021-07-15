@@ -1,11 +1,26 @@
 ﻿@model List<ProjectItem>
 
-
-<a asp-action="AddProjectItem" asp-controller="Home" asp-route-id="@ViewBag.ProjectId">Add Project Item</a>
+<div class="col-auto">
+    <a asp-action="AddProjectItem" asp-controller="Home" asp-route-id="@ViewBag.ProjectId">
+        <div class="project__item d-flex align-items-center justify-content-center" style="height: 184px;">
+            <img src="img/content/add-project.svg" alt="">
+            Add Project Page
+        </div>
+    </a>
+</div>
 @foreach (var projectItem in Model)
 {
-    <p>@projectItem.Name</p>
-    <a asp-action="ProjectItemDetails" asp-controller="Home" asp-route-id="@projectItem.Id" class="pro-title">
-        @projectItem.Name
-    </a>
+    <div class="col-auto">
+        <a asp-action="ProjectItemDetails" asp-controller="Home" asp-route-id="@projectItem.Id">
+            <div class="project__item">
+                <figure class="project__item--cover d-flex align-items-center justify-content-center">
+                    <img src="img/test.jpg" alt="">
+                </figure>
+                <div class="project__item--title medium">
+                    @projectItem.Name
+                </div>
+            </div>
+        </a>
+    </div>
 }
+    <!-- item end -->

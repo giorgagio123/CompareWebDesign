@@ -1,29 +1,40 @@
 ﻿@model List<Project>
 
-<div>
-    <a asp-action="AddProject" asp-controller="Home">Add Project</a>
 
-    @if (User.Identity.IsAuthenticated)
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="col-auto">
+        <a asp-action="AddProject" asp-controller="Home">
+            <div class="project__item d-flex align-items-center justify-content-center" style="height: 184px;">
+                <img src="img/content/add-project.svg" alt="">
+                Add Project
+            </div>
+        </a>
+    </div><!-- item end -->
+    if (!Model.Any())
     {
-        if (!Model.Any())
-        {
-            <p>Create Project</p>
-        }
-        else
-        {
-            foreach (var project in Model)
-            {
-                <p>@project.Name</p>
-                <a asp-action="ProjectItemList" asp-controller="Home" asp-route-id="@project.Id" class="pro-title">
-                    @project.Name
-                </a>
-            }
-        }
+        <p>შექმენით პროექტი</p>
     }
     else
     {
-        <p>Log In To Create Project</p>
+        foreach (var project in Model)
+        {
+            <div class="col-auto">
+                <a asp-action="ProjectItemList" asp-controller="Home" asp-route-id="@project.Id">
+                    <div class="project__item">
+                        <figure class="project__item--cover d-flex align-items-center justify-content-center">
+                            <img src="img/test.jpg" alt="">
+                        </figure>
+                        <div class="project__item--title medium">
+                            @project.Name
+                        </div>
+                    </div>
+                </a>
+            </div><!-- item end -->
+        }
     }
-</div>
-
-
+}
+else
+{
+    <p>გაიარეთ რეგისტრაცია ან ავტორიზაცია</p>
+}

@@ -111,7 +111,7 @@ namespace CompareWebDesign.Controllers
                     var cropSettings = JsonConvert.DeserializeObject<List<CropSettingsModel>>(model.CropSettings);
                     foreach (var item in cropSettings)
                     {
-                        using (Bitmap bmp = new Bitmap(item.width, item.height))
+                        using (Bitmap bmp = new Bitmap((int)item.width, (int)item.height))
                         {
                             bmp.SetResolution(OriginalImage.HorizontalResolution, OriginalImage.VerticalResolution);
 
@@ -123,7 +123,7 @@ namespace CompareWebDesign.Controllers
 
                                 Graphic.PixelOffsetMode = PixelOffsetMode.HighQuality;
 
-                                Graphic.DrawImage(OriginalImage, new Rectangle(0, 0, item.width, item.height), item.x, item.y, item.width, item.height, GraphicsUnit.Pixel);
+                                Graphic.DrawImage(OriginalImage, new Rectangle(0, 0, (int)item.width, (int)item.height), (int)item.x, (int)item.y, (int)item.width, (int)item.height, GraphicsUnit.Pixel);
 
                                 MemoryStream ms = new MemoryStream();
 

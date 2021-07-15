@@ -3,14 +3,14 @@
     var returnUrl = Context.Request.Query["ReturnUrl"];
 }
 @Html.ValidationSummary(false, string.Empty, new { @class = "text-danger" })
-<form asp-controller="Account" asp-action="Login" method="post" asp-route-returnurl="@returnUrl">
+<form asp-controller="Account" asp-action="Login" method="post" asp-route-returnurl="@returnUrl" class="login">
     <div>
-        <input asp-for="UserName" class="text-regular" type="text" autofocus="autofocus" placeholder="UserName" id="login-email" />
+        <input asp-for="UserName" class="login__input" type="text" autofocus="autofocus" placeholder="UserName" id="login-email" c/>
         <span asp-validation-for="UserName"></span>
     </div>
 
     <div>
-        <input asp-for="Password" class="text-regular" type="text" autofocus="autofocus" placeholder="USerName" id="login-email" />
+        <input asp-for="Password" class="login__input" type="text" autofocus="autofocus" placeholder="USerName" id="login-email" />
         <span asp-validation-for="Password"></span>
     </div>
 
@@ -23,3 +23,23 @@
     <button type="submit">Login</button>
 </form>
 
+
+<style>
+    .login {
+        margin-top: 50px;
+    }
+
+    .login__input {
+        background-color: rgb(250, 251, 252);
+        border-color: rgb(223, 225, 230);
+        border-radius: 3px;
+        border-width: 2px;
+        border-style: solid;
+        box-sizing: border-box;
+        color: rgb(9, 30, 66);
+        width: 100%;
+        outline: none;
+        padding: 15px;
+        margin-top: 15px;
+    }
+</style>

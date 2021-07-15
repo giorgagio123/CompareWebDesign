@@ -1,11 +1,56 @@
 ﻿@model Project
 
-<form asp-controller="Home" asp-action="AddProject" method="post">
-    <div>
-        <input asp-for="Name" />
+<div class="add-project d-flex align-items-center justify-content-center flex-column">
+    <div class="add-project__container">
+        <div class="back-btn d-flex justify-content-end">
+            <a href="javascript:history.back()">უკან დაბრუნება</a>
+        </div>
+        <form asp-controller="Home" asp-action="AddProject" method="post" class="add-project__form">
+            <label class="add-project__label">
+                <p>პროექტის დასახელება</p>
+                <input asp-for="Name" class="add-project__label--input" placeholder="e.g. my project" />
+            </label>
+            <button type="submit" name="save" class="add-project__save">
+                შექმნა
+            </button>
+        </form>
     </div>
-    <button type="submit" name="save" class="btn bg-blue">
-        <i class="fa fa-floppy-o"></i>
-        <p>Save</p>
-    </button>
-</form> 
+</div>
+
+<script>
+    $('.bar, .dashboard__body, .dashboard__header').remove();
+</script>
+
+<style>
+    .add-project {
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+    .add-project__container {
+        width:100%;
+        max-width: 400px;
+    }
+    .back-btn {
+        width: 100%;
+    }
+    .add-project__form {
+        width: 100%;
+        margin-top: 30px;
+    }
+    .add-project__label {
+        width: 100%;
+    }
+    .add-project__label--input {
+        width: 100%;
+        padding: 15px 8px;
+    }
+    .add-project__save {
+        width: 100%;
+        margin-top: 15px;
+        padding: 15px 8px;
+    }
+</style>
