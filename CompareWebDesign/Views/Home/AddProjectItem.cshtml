@@ -106,7 +106,7 @@
 
         <form asp-controller="Home" asp-action="AddComment" method="post" class="comment-section">
             <input class="selection-id" type="hidden" asp-for="CommentsModel.SelectionId" />
-            <input type="hidden" asp-for="CommentsModel.ProjectItemId" />
+            <input type="hidden"  data-cropurl="@Url.Action("SaveCropSettings","Home")" asp-for="CommentsModel.ProjectItemId" />
             <input class="selection-id" asp-for="CommentsModel.Comment" />
 
             <button type="submit">send</button>
@@ -125,7 +125,7 @@
 
             $.post("@(Url.Action("AddProjectItem", "Home"))", postData, function (data) {
                 $('#@Html.IdFor(x => x.CommentsModel.ProjectItemId)').val(data.projectItemId);
-                    alert(data.projectItemId);
+                    alert("შეინახა წარმატებით");
             });
 
             return false;

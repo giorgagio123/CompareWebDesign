@@ -160,6 +160,17 @@ namespace CompareWebDesign.Controllers
             return NoContent();
         }
 
+        [HttpPost]
+        public IActionResult SaveCropSettings(string settings, int projectId)
+        {
+            var projectItem = _projectService.GetProjectItemById(projectId);
+
+            projectItem.CropSettings = settings;
+            _projectService.UpdateProjectItem(projectItem);
+
+            return Json(new { success = true});
+        }
+
         public IActionResult ProjectItemDetails(int id)
         {
             var model = _projectService.GetProjectItemById(id);

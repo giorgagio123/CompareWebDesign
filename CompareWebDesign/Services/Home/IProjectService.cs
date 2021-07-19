@@ -15,5 +15,7 @@ namespace CompareWebDesign.Services.Home
         ProjectItem GetProjectItemById(int id);
 
         void InsertComment(Comment comment);
+
+        void UpdateProjectItem(ProjectItem projectItem);
     }
 }

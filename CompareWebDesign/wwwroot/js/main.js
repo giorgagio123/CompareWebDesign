@@ -179,7 +179,14 @@ function cropper(){
             commentClick(this)
         });
 
+        debugger;
+
         $('#CropSettings').val(JSON.stringify(areas));
+
+        data = { settings: $('#CropSettings').val(), projectId: $('#CommentsModel_ProjectItemId').val() };
+        url = $('#CommentsModel_ProjectItemId').data("cropurl");
+        
+        $.post(url, data);
     };
     
     // Display areas coordinates in a div

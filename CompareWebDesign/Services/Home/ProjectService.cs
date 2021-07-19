@@ -44,6 +44,11 @@ namespace CompareWebDesign.Services.Home
             _projectItemRepository.Insert(projectItem);
         }
 
+        public void UpdateProjectItem(ProjectItem projectItem)
+        {
+            _projectItemRepository.Update(projectItem);
+        }
+
         public void InsertComment(Comment comment)
         {
             _commentRepository.Insert(comment);
